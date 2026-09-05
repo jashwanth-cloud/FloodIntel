@@ -1,0 +1,989 @@
+{
+  "rainfall_netcdf": {
+    "files": [
+      {
+        "filename": "RF25_ind2018_rfp25.nc",
+        "size_mb": 25.43,
+        "dimensions": {
+          "LONGITUDE": 135,
+          "LATITUDE": 129,
+          "TIME": 365
+        },
+        "variables": {
+          "LONGITUDE": {
+            "shape": [
+              135
+            ],
+            "dtype": "float64",
+            "units": "degrees_east",
+            "long_name": "N/A",
+            "missing_value": null,
+            "fill_value": null,
+            "min": 66.5,
+            "max": 100.0,
+            "n_valid": 135,
+            "n_total": 135,
+            "pct_missing": 0.0
+          },
+          "LATITUDE": {
+            "shape": [
+              129
+            ],
+            "dtype": "float64",
+            "units": "degrees_north",
+            "long_name": "N/A",
+            "missing_value": null,
+            "fill_value": null,
+            "min": 6.5,
+            "max": 38.5,
+            "n_valid": 129,
+            "n_total": 129,
+            "pct_missing": 0.0
+          },
+          "TIME": {
+            "shape": [
+              365
+            ],
+            "dtype": "float64",
+            "units": "days since 1900-12-31 00:00:00",
+            "long_name": "N/A",
+            "missing_value": null,
+            "fill_value": null,
+            "min": 42735.0,
+            "max": 43099.0,
+            "n_valid": 365,
+            "n_total": 365,
+            "pct_missing": 0.0
+          },
+          "RAINFALL": {
+            "shape": [
+              365,
+              129,
+              135
+            ],
+            "dtype": "float32",
+            "units": "mm",
+            "long_name": "Rainfall",
+            "missing_value": -999.0,
+            "fill_value": -999.0,
+            "min": 0.0,
+            "max": 534.245849609375,
+            "n_valid": 1811860,
+            "n_total": 6356475,
+            "pct_missing": 71.4958
+          }
+        }
+      },
+      {
+        "filename": "RF25_ind2019_rfp25.nc",
+        "size_mb": 25.43,
+        "dimensions": {
+          "LONGITUDE": 135,
+          "LATITUDE": 129,
+          "TIME": 365
+        },
+        "variables": {
+          "LONGITUDE": {
+            "shape": [
+              135
+            ],
+            "dtype": "float64",
+            "units": "degrees_east",
+            "long_name": "N/A",
+            "missing_value": null,
+            "fill_value": null,
+            "min": 66.5,
+            "max": 100.0,
+            "n_valid": 135,
+            "n_total": 135,
+            "pct_missing": 0.0
+          },
+          "LATITUDE": {
+            "shape": [
+              129
+            ],
+            "dtype": "float64",
+            "units": "degrees_north",
+            "long_name": "N/A",
+            "missing_value": null,
+            "fill_value": null,
+            "min": 6.5,
+            "max": 38.5,
+            "n_valid": 129,
+            "n_total": 129,
+            "pct_missing": 0.0
+          },
+          "TIME": {
+            "shape": [
+              365
+            ],
+            "dtype": "float64",
+            "units": "days since 1900-12-31 00:00:00",
+            "long_name": "N/A",
+            "missing_value": null,
+            "fill_value": null,
+            "min": 43100.0,
+            "max": 43464.0,
+            "n_valid": 365,
+            "n_total": 365,
+            "pct_missing": 0.0
+          },
+          "RAINFALL": {
+            "shape": [
+              365,
+              129,
+              135
+            ],
+            "dtype": "float32",
+            "units": "mm",
+            "long_name": "Rainfall",
+            "missing_value": -999.0,
+            "fill_value": -999.0,
+            "min": 0.0,
+            "max": 487.10498046875,
+            "n_valid": 1811860,
+            "n_total": 6356475,
+            "pct_missing": 71.4958
+          }
+        }
+      },
+      {
+        "filename": "RF25_ind2020_rfp25.nc",
+        "size_mb": 25.5,
+        "dimensions": {
+          "LONGITUDE": 135,
+          "LATITUDE": 129,
+          "TIME": 366
+        },
+        "variables": {
+          "LONGITUDE": {
+            "shape": [
+              135
+            ],
+            "dtype": "float64",
+            "units": "degrees_east",
+            "long_name": "N/A",
+            "missing_value": null,
+            "fill_value": null,
+            "min": 66.5,
+            "max": 100.0,
+            "n_valid": 135,
+            "n_total": 135,
+            "pct_missing": 0.0
+          },
+          "LATITUDE": {
+            "shape": [
+              129
+            ],
+            "dtype": "float64",
+            "units": "degrees_north",
+            "long_name": "N/A",
+            "missing_value": null,
+            "fill_value": null,
+            "min": 6.5,
+            "max": 38.5,
+            "n_valid": 129,
+            "n_total": 129,
+            "pct_missing": 0.0
+          },
+          "TIME": {
+            "shape": [
+              366
+            ],
+            "dtype": "float64",
+            "units": "days since 1900-12-31 00:00:00",
+            "long_name": "N/A",
+            "missing_value": null,
+            "fill_value": null,
+            "min": 43465.0,
+            "max": 43830.0,
+            "n_valid": 366,
+            "n_total": 366,
+            "pct_missing": 0.0
+          },
+          "RAINFALL": {
+            "shape": [
+              366,
+              129,
+              135
+            ],
+            "dtype": "float32",
+            "units": "mm",
+            "long_name": "Rainfall",
+            "missing_value": -999.0,
+            "fill_value": -999.0,
+            "min": 0.0,
+            "max": 539.9127807617188,
+            "n_valid": 1816824,
+            "n_total": 6373890,
+            "pct_missing": 71.4958
+          }
+        }
+      },
+      {
+        "filename": "RF25_ind2021_rfp25.nc",
+        "size_mb": 25.43,
+        "dimensions": {
+          "LONGITUDE": 135,
+          "LATITUDE": 129,
+          "TIME": 365
+        },
+        "variables": {
+          "LONGITUDE": {
+            "shape": [
+              135
+            ],
+            "dtype": "float64",
+            "units": "degrees_east",
+            "long_name": "N/A",
+            "missing_value": null,
+            "fill_value": null,
+            "min": 66.5,
+            "max": 100.0,
+            "n_valid": 135,
+            "n_total": 135,
+            "pct_missing": 0.0
+          },
+          "LATITUDE": {
+            "shape": [
+              129
+            ],
+            "dtype": "float64",
+            "units": "degrees_north",
+            "long_name": "N/A",
+            "missing_value": null,
+            "fill_value": null,
+            "min": 6.5,
+            "max": 38.5,
+            "n_valid": 129,
+            "n_total": 129,
+            "pct_missing": 0.0
+          },
+          "TIME": {
+            "shape": [
+              365
+            ],
+            "dtype": "float64",
+            "units": "days since 1900-12-31 00:00:00",
+            "long_name": "N/A",
+            "missing_value": null,
+            "fill_value": null,
+            "min": 43831.0,
+            "max": 44195.0,
+            "n_valid": 365,
+            "n_total": 365,
+            "pct_missing": 0.0
+          },
+          "RAINFALL": {
+            "shape": [
+              365,
+              129,
+              135
+            ],
+            "dtype": "float32",
+            "units": "mm",
+            "long_name": "Rainfall",
+            "missing_value": -999.0,
+            "fill_value": -999.0,
+            "min": 0.0,
+            "max": 526.7105712890625,
+            "n_valid": 1811860,
+            "n_total": 6356475,
+            "pct_missing": 71.4958
+          }
+        }
+      },
+      {
+        "filename": "RF25_ind2022_rfp25.nc",
+        "size_mb": 25.43,
+        "dimensions": {
+          "LONGITUDE": 135,
+          "LATITUDE": 129,
+          "TIME": 365
+        },
+        "variables": {
+          "LONGITUDE": {
+            "shape": [
+              135
+            ],
+            "dtype": "float64",
+            "units": "degrees_east",
+            "long_name": "N/A",
+            "missing_value": null,
+            "fill_value": null,
+            "min": 66.5,
+            "max": 100.0,
+            "n_valid": 135,
+            "n_total": 135,
+            "pct_missing": 0.0
+          },
+          "LATITUDE": {
+            "shape": [
+              129
+            ],
+            "dtype": "float64",
+            "units": "degrees_north",
+            "long_name": "N/A",
+            "missing_value": null,
+            "fill_value": null,
+            "min": 6.5,
+            "max": 38.5,
+            "n_valid": 129,
+            "n_total": 129,
+            "pct_missing": 0.0
+          },
+          "TIME": {
+            "shape": [
+              365
+            ],
+            "dtype": "float64",
+            "units": "days since 1900-12-31 00:00:00",
+            "long_name": "N/A",
+            "missing_value": null,
+            "fill_value": null,
+            "min": 44196.0,
+            "max": 44560.0,
+            "n_valid": 365,
+            "n_total": 365,
+            "pct_missing": 0.0
+          },
+          "RAINFALL": {
+            "shape": [
+              365,
+              129,
+              135
+            ],
+            "dtype": "float32",
+            "units": "mm",
+            "long_name": "Rainfall",
+            "missing_value": -999.0,
+            "fill_value": -999.0,
+            "min": 0.0,
+            "max": 979.144775390625,
+            "n_valid": 1811860,
+            "n_total": 6356475,
+            "pct_missing": 71.4958
+          }
+        }
+      },
+      {
+        "filename": "RF25_ind2023_rfp25.nc",
+        "size_mb": 25.43,
+        "dimensions": {
+          "LONGITUDE": 135,
+          "LATITUDE": 129,
+          "TIME": 365
+        },
+        "variables": {
+          "LONGITUDE": {
+            "shape": [
+              135
+            ],
+            "dtype": "float64",
+            "units": "degrees_east",
+            "long_name": "N/A",
+            "missing_value": null,
+            "fill_value": null,
+            "min": 66.5,
+            "max": 100.0,
+            "n_valid": 135,
+            "n_total": 135,
+            "pct_missing": 0.0
+          },
+          "LATITUDE": {
+            "shape": [
+              129
+            ],
+            "dtype": "float64",
+            "units": "degrees_north",
+            "long_name": "N/A",
+            "missing_value": null,
+            "fill_value": null,
+            "min": 6.5,
+            "max": 38.5,
+            "n_valid": 129,
+            "n_total": 129,
+            "pct_missing": 0.0
+          },
+          "TIME": {
+            "shape": [
+              365
+            ],
+            "dtype": "float64",
+            "units": "days since 1900-12-31 00:00:00",
+            "long_name": "N/A",
+            "missing_value": null,
+            "fill_value": null,
+            "min": 44561.0,
+            "max": 44925.0,
+            "n_valid": 365,
+            "n_total": 365,
+            "pct_missing": 0.0
+          },
+          "RAINFALL": {
+            "shape": [
+              365,
+              129,
+              135
+            ],
+            "dtype": "float32",
+            "units": "mm",
+            "long_name": "Rainfall",
+            "missing_value": -999.0,
+            "fill_value": -999.0,
+            "min": 0.0,
+            "max": 689.0372314453125,
+            "n_valid": 1811781,
+            "n_total": 6356475,
+            "pct_missing": 71.4971
+          }
+        }
+      },
+      {
+        "filename": "RF25_ind2024_rfp25.nc",
+        "size_mb": 25.5,
+        "dimensions": {
+          "LONGITUDE": 135,
+          "LATITUDE": 129,
+          "TIME": 366
+        },
+        "variables": {
+          "LONGITUDE": {
+            "shape": [
+              135
+            ],
+            "dtype": "float64",
+            "units": "degrees_east",
+            "long_name": "N/A",
+            "missing_value": null,
+            "fill_value": null,
+            "min": 66.5,
+            "max": 100.0,
+            "n_valid": 135,
+            "n_total": 135,
+            "pct_missing": 0.0
+          },
+          "LATITUDE": {
+            "shape": [
+              129
+            ],
+            "dtype": "float64",
+            "units": "degrees_north",
+            "long_name": "N/A",
+            "missing_value": null,
+            "fill_value": null,
+            "min": 6.5,
+            "max": 38.5,
+            "n_valid": 129,
+            "n_total": 129,
+            "pct_missing": 0.0
+          },
+          "TIME": {
+            "shape": [
+              366
+            ],
+            "dtype": "float64",
+            "units": "days since 1900-12-31 00:00:00",
+            "long_name": "N/A",
+            "missing_value": null,
+            "fill_value": null,
+            "min": 44926.0,
+            "max": 45291.0,
+            "n_valid": 366,
+            "n_total": 366,
+            "pct_missing": 0.0
+          },
+          "RAINFALL": {
+            "shape": [
+              366,
+              129,
+              135
+            ],
+            "dtype": "float32",
+            "units": "mm",
+            "long_name": "Rainfall",
+            "missing_value": -999.0,
+            "fill_value": -999.0,
+            "min": 0.0,
+            "max": 660.5491943359375,
+            "n_valid": 1816824,
+            "n_total": 6373890,
+            "pct_missing": 71.4958
+          }
+        }
+      },
+      {
+        "filename": "RF25_ind2025_rfp25.nc",
+        "size_mb": 25.43,
+        "dimensions": {
+          "LONGITUDE": 135,
+          "LATITUDE": 129,
+          "TIME": 365
+        },
+        "variables": {
+          "LONGITUDE": {
+            "shape": [
+              135
+            ],
+            "dtype": "float64",
+            "units": "degrees_east",
+            "long_name": "N/A",
+            "missing_value": null,
+            "fill_value": null,
+            "min": 66.5,
+            "max": 100.0,
+            "n_valid": 135,
+            "n_total": 135,
+            "pct_missing": 0.0
+          },
+          "LATITUDE": {
+            "shape": [
+              129
+            ],
+            "dtype": "float64",
+            "units": "degrees_north",
+            "long_name": "N/A",
+            "missing_value": null,
+            "fill_value": null,
+            "min": 6.5,
+            "max": 38.5,
+            "n_valid": 129,
+            "n_total": 129,
+            "pct_missing": 0.0
+          },
+          "TIME": {
+            "shape": [
+              365
+            ],
+            "dtype": "float64",
+            "units": "days since 1900-12-31 00:00:00",
+            "long_name": "N/A",
+            "missing_value": null,
+            "fill_value": null,
+            "min": 45292.0,
+            "max": 45656.0,
+            "n_valid": 365,
+            "n_total": 365,
+            "pct_missing": 0.0
+          },
+          "RAINFALL": {
+            "shape": [
+              365,
+              129,
+              135
+            ],
+            "dtype": "float32",
+            "units": "mm",
+            "long_name": "Rainfall",
+            "missing_value": -999.0,
+            "fill_value": -999.0,
+            "min": 0.0,
+            "max": 469.21014404296875,
+            "n_valid": 1811860,
+            "n_total": 6356475,
+            "pct_missing": 71.4958
+          }
+        }
+      }
+    ],
+    "error": null
+  },
+  "dem": {
+    "raw_files": [],
+    "processed_files": [
+      {
+        "path": "C:\\Users\\bhara\\Downloads\\Copernicus-India-Flood\\data\\processed\\dem\\dem_test_processed.tif",
+        "size_mb": 0.33
+      }
+    ],
+    "raster_details": {
+      "path": "C:\\Users\\bhara\\Downloads\\Copernicus-India-Flood\\data\\processed\\dem\\dem_test_processed.tif",
+      "crs": "EPSG:4326",
+      "transform": [
+        0.0002777777777777778,
+        0.0,
+        3.999861111111111,
+        0.0,
+        -0.0002777777777777778,
+        13.00013888888889,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "width": 3601,
+      "height": 3601,
+      "count": 1,
+      "dtype": "float32",
+      "nodata": NaN,
+      "bounds": [
+        3.999861111111111,
+        11.999861111111112,
+        5.000138888888889,
+        13.00013888888889
+      ],
+      "resolution_deg": [
+        0.0002777777777777778,
+        0.0002777777777777778
+      ],
+      "min_elevation": 1.0,
+      "max_elevation": 11.0,
+      "n_valid_pixels": 12967201,
+      "n_total_pixels": 12967201
+    },
+    "error": null
+  },
+  "satellite_tifs": {
+    "satellite_features.tif": {
+      "path": "C:\\Users\\bhara\\Downloads\\Copernicus-India-Flood\\data\\processed\\satellite_features.tif",
+      "size_mb": 10.54,
+      "crs": "EPSG:4326",
+      "bounds": [
+        80.3865,
+        16.2567,
+        80.48649999999999,
+        16.3567
+      ],
+      "width": 512,
+      "height": 512,
+      "bands": 11,
+      "dtype": "float32",
+      "nodata": null,
+      "transform": [
+        0.0001953124999999889,
+        0.0,
+        80.3865,
+        0.0,
+        -0.00019531250000000278,
+        16.3567,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "resolution_deg": [
+        0.0001953124999999889,
+        0.00019531250000000278
+      ]
+    },
+    "satellite_features_normalized.tif": {
+      "path": "C:\\Users\\bhara\\Downloads\\Copernicus-India-Flood\\data\\processed\\satellite_features_normalized.tif",
+      "size_mb": 10.34,
+      "crs": "EPSG:4326",
+      "bounds": [
+        80.3865,
+        16.2567,
+        80.48649999999999,
+        16.3567
+      ],
+      "width": 512,
+      "height": 512,
+      "bands": 11,
+      "dtype": "float32",
+      "nodata": null,
+      "transform": [
+        0.0001953124999999889,
+        0.0,
+        80.3865,
+        0.0,
+        -0.00019531250000000278,
+        16.3567,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "resolution_deg": [
+        0.0001953124999999889,
+        0.00019531250000000278
+      ]
+    },
+    "flood_prediction.tif": {
+      "path": "C:\\Users\\bhara\\Downloads\\Copernicus-India-Flood\\data\\processed\\flood_prediction.tif",
+      "size_mb": 0.01,
+      "crs": "EPSG:4326",
+      "bounds": [
+        80.3865,
+        16.2567,
+        80.48649999999999,
+        16.3567
+      ],
+      "width": 512,
+      "height": 512,
+      "bands": 1,
+      "dtype": "uint8",
+      "nodata": 255.0,
+      "transform": [
+        0.0001953124999999889,
+        0.0,
+        80.3865,
+        0.0,
+        -0.00019531250000000278,
+        16.3567,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "resolution_deg": [
+        0.0001953124999999889,
+        0.00019531250000000278
+      ]
+    },
+    "gfm_flood_reference.tif": {
+      "path": "C:\\Users\\bhara\\Downloads\\Copernicus-India-Flood\\data\\processed\\gfm_flood_reference.tif",
+      "size_mb": 0.0,
+      "crs": "EPSG:4326",
+      "bounds": [
+        80.3865,
+        16.2567,
+        80.4865,
+        16.3567
+      ],
+      "width": 512,
+      "height": 512,
+      "bands": 1,
+      "dtype": "uint8",
+      "nodata": 255.0,
+      "transform": [
+        0.00019531250000001665,
+        0.0,
+        80.3865,
+        0.0,
+        -0.00019531250000000278,
+        16.3567,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "resolution_deg": [
+        0.00019531250000001665,
+        0.00019531250000000278
+      ]
+    }
+  },
+  "hydrology_geojson": {
+    "river_network": {
+      "path": "C:\\Users\\bhara\\Downloads\\Copernicus-India-Flood\\data\\raw\\hydrology\\rivers\\india_river_network.geojson",
+      "size_mb": 356.23,
+      "header_snippet": "{\n\"type\": \"FeatureCollection\",\n\"name\": \"River_v1\",\n\"features\": [\n{ \"type\": \"Feature\", \"properties\": { \"OBJECTID\": 1, \"rivname\": \"Balijan\", \"sub_basin\": \"Brahmaputra Upper\", \"ba_name\": \"Brahmaputra\", \"length_km\": 21.757609152699999, \"origin\": null, \"major_trib\": null, \"st_pt_lat\": 28.061554912799998, \"st_pt_long\": 96.021937641600005, \"st_loc_ste\": \"Arunanchal Pradesh\", \"st_loc_dst\": \"Lower Dibang Valley\", \"st_loc_sb_\": \"Koronu Circle\", \"st_loc_vil\": \"Data Partially Available\", \"en_pt_lat\": 27.947"
+    },
+    "reservoirs": {
+      "path": "C:\\Users\\bhara\\Downloads\\Copernicus-India-Flood\\data\\raw\\hydrology\\reservoirs\\india_reservoirs_source.geojson",
+      "size_mb": 452.53,
+      "header_snippet": "{\n\"type\": \"FeatureCollection\",\n\"name\": \"Reservoir\",\n\"features\": [\n{ \"type\": \"Feature\", \"properties\": { \"res_name\": \"Kuttiyar\", \"river\": null, \"basin\": \"West flowing rivers from Tadri to Kanyakumari\", \"PIC\": \"TN12MH0062\", \"dm_name\": \"Kuttiyar\", \"area\": 4.2531216020100002 }, \"geometry\": { \"type\": \"MultiPolygon\", \"coordinates\": [ [ [ [ 3702669.734700001776218, 2303565.665800001472235 ], [ 3702803.364900000393391, 2303497.202799998223782 ], [ 3702832.244099996984005, 2303485.845400001853704 ], [ 370"
+    },
+    "canal_network": {
+      "path": "C:\\Users\\bhara\\Downloads\\Copernicus-India-Flood\\data\\raw\\hydrology\\drainage\\india_canal_network.geojson",
+      "size_mb": 233.1,
+      "header_snippet": "{\n\"type\": \"FeatureCollection\",\n\"name\": \"Canal_Network\",\n\"features\": [\n{ \"type\": \"Feature\", \"properties\": { \"prj_name\": \"Pullambadi Canal\", \"can_name\": \"Distributary No. 5\", \"can_type\": \"Distributary\", \"basin\": \"Cauvery\", \"river\": \"Cauvery\", \"state\": \"Tamil Nadu\", \"length_km\": \"2.98357911366772\" }, \"geometry\": { \"type\": \"MultiLineString\", \"coordinates\": [ [ [ 3885338.177199997007847, 2570340.920000001788139 ], [ 3885613.578400000929832, 2570252.113800000399351 ], [ 3885632.233900003135204, 257024"
+    },
+    "waterbodies_india": {
+      "path": "C:\\Users\\bhara\\Downloads\\Copernicus-India-Flood\\data\\raw\\hydrology\\water_bodies\\india\\india_surface_waterbodies.geojson",
+      "size_mb": 5074.95,
+      "header_snippet": "{\n\"type\": \"FeatureCollection\",\n\"name\": \"india_surface_waterbodies\",\n\"crs\": { \"type\": \"name\", \"properties\": { \"name\": \"urn:ogc:def:crs:OGC:1.3:CRS84\" } },\n\"features\": [\n{ \"type\": \"Feature\", \"properties\": { \"id\": 19, \"objectid_1\": 19, \"wetcode\": 2102, \"wetname\": \"\", \"aqveg\": \"No\", \"turbidity\": \"Moderate\", \"level_i\": \"Costal\", \"level_ii\": \"Natural\", \"level_iii\": \"Creek\", \"l4type\": \"\", \"area_ha\": 18.447793072214488, \"remarks\": \"North Andaman\", \"lat\": 13.2567013285, \"long\": 92.858560490800002, \"state"
+    },
+    "river_basins_cwc": {
+      "path": "C:\\Users\\bhara\\Downloads\\Copernicus-India-Flood\\data\\raw\\hydrology\\river_basins\\extracted\\basin_cwc.GeoJSON",
+      "size_mb": 17.48,
+      "header_snippet": "{\n\"type\": \"FeatureCollection\",\n\"name\": \"basin_cwc\",\n\"crs\": { \"type\": \"name\", \"properties\": { \"name\": \"urn:ogc:def:crs:EPSG::7755\" } },\n\"features\": [\n{ \"type\": \"Feature\", \"properties\": { \"id\": 1, \"objectid\": 1, \"bacode\": \"05\", \"ba_a_ro\": 21.36, \"ba_a_wp\": 21.36, \"ba_u_swr\": 19.0, \"ba_hos\": 34.0, \"ba_stcl\": 8.978, \"ba_stucl\": 0.015, \"ba_studl\": 0.262, \"area_sqkm\": 81155.0, \"state\": \"Tamil Nadu, Puducherry, Karnataka and Kerala\", \"ba_name\": \"Cauvery\", \"ba_tlst\": 8.993, \"shape_length\": 2588257.92923"
+    }
+  },
+  "training_csv": {
+    "path": "C:\\Users\\bhara\\Downloads\\Copernicus-India-Flood\\data\\processed\\flood_training_dataset.csv",
+    "size_mb": 32.5,
+    "shape": [
+      262144,
+      12
+    ],
+    "columns": [
+      "before_vv",
+      "before_vh",
+      "after_vv",
+      "after_vh",
+      "vv_change",
+      "vh_change",
+      "vv_ratio",
+      "vh_ratio",
+      "before_vv_vh_ratio",
+      "after_vv_vh_ratio",
+      "vv_vh_change",
+      "flood_label"
+    ],
+    "dtypes": {
+      "before_vv": "float64",
+      "before_vh": "float64",
+      "after_vv": "float64",
+      "after_vh": "float64",
+      "vv_change": "float64",
+      "vh_change": "float64",
+      "vv_ratio": "float64",
+      "vh_ratio": "float64",
+      "before_vv_vh_ratio": "float64",
+      "after_vv_vh_ratio": "float64",
+      "vv_vh_change": "float64",
+      "flood_label": "int64"
+    },
+    "missing_pct": {},
+    "class_distribution": null,
+    "numeric_stats": {
+      "before_vv": {
+        "count": 262144.0,
+        "mean": 0.0891474471301113,
+        "std": 0.14816152934065518,
+        "min": 0.0,
+        "25%": 0.02392548525,
+        "50%": 0.0423658075,
+        "75%": 0.08188978,
+        "max": 1.0
+      },
+      "before_vh": {
+        "count": 262144.0,
+        "mean": 0.23145075159272577,
+        "std": 0.17647454493417886,
+        "min": 0.0,
+        "25%": 0.1099081575,
+        "50%": 0.191558785,
+        "75%": 0.30450422,
+        "max": 1.0
+      },
+      "after_vv": {
+        "count": 262144.0,
+        "mean": 0.07733061711856627,
+        "std": 0.1464666807478832,
+        "min": 0.0,
+        "25%": 0.01613907475,
+        "50%": 0.0297190375,
+        "75%": 0.06653188374999999,
+        "max": 1.0
+      },
+      "after_vh": {
+        "count": 262144.0,
+        "mean": 0.2459974175969194,
+        "std": 0.17785397087720195,
+        "min": 0.0,
+        "25%": 0.1262787975,
+        "50%": 0.2160935,
+        "75%": 0.325750285,
+        "max": 1.0
+      },
+      "vv_change": {
+        "count": 262144.0,
+        "mean": 0.22640016434114213,
+        "std": 0.12009695072305586,
+        "min": 0.0,
+        "25%": 0.185404675,
+        "50%": 0.19867433,
+        "75%": 0.22070964,
+        "max": 1.0
+      },
+      "vh_change": {
+        "count": 262144.0,
+        "mean": 0.45435822300824513,
+        "std": 0.16509106984924707,
+        "min": 0.0,
+        "25%": 0.35956495,
+        "50%": 0.4429208,
+        "75%": 0.5427701375,
+        "max": 1.0
+      },
+      "vv_ratio": {
+        "count": 262144.0,
+        "mean": 0.15489036131335698,
+        "std": 0.1594776389818011,
+        "min": 0.0,
+        "25%": 0.060829484999999996,
+        "50%": 0.10943082,
+        "75%": 0.18868215249999998,
+        "max": 1.0
+      },
+      "vh_ratio": {
+        "count": 262144.0,
+        "mean": 0.19732723154795065,
+        "std": 0.17300365251730254,
+        "min": 0.0,
+        "25%": 0.08574063625,
+        "50%": 0.150544975,
+        "75%": 0.25137491500000003,
+        "max": 1.0
+      },
+      "before_vv_vh_ratio": {
+        "count": 262144.0,
+        "mean": 0.09862754937745444,
+        "std": 0.1507696830305866,
+        "min": 0.0,
+        "25%": 0.02444799175,
+        "50%": 0.05028789,
+        "75%": 0.103968675,
+        "max": 1.0
+      },
+      "after_vv_vh_ratio": {
+        "count": 262144.0,
+        "mean": 0.057446693513490105,
+        "std": 0.1311890341223202,
+        "min": 0.0,
+        "25%": 0.009486423124999999,
+        "50%": 0.0197029105,
+        "75%": 0.04541666925,
+        "max": 1.0
+      },
+      "vv_vh_change": {
+        "count": 262144.0,
+        "mean": 0.23563378012485298,
+        "std": 0.1092894995542822,
+        "min": 0.0,
+        "25%": 0.20507149,
+        "50%": 0.21961823,
+        "75%": 0.23648189249999998,
+        "max": 1.0
+      },
+      "flood_label": {
+        "count": 262144.0,
+        "mean": 0.022144317626953125,
+        "std": 0.14715308161012663,
+        "min": 0.0,
+        "25%": 0.0,
+        "50%": 0.0,
+        "75%": 0.0,
+        "max": 1.0
+      }
+    }
+  },
+  "admin_ward_boundaries": {
+    "candidates_found": [
+      "C:\\Users\\bhara\\Downloads\\Copernicus-India-Flood\\data\\raw\\hydrology\\water_bodies\\reports\\surface_waterbodies_state_index.json",
+      "C:\\Users\\bhara\\Downloads\\Copernicus-India-Flood\\data\\raw\\hydrology\\water_bodies\\reports\\surface_waterbodies_state_index.json",
+      "C:\\Users\\bhara\\Downloads\\Copernicus-India-Flood\\data\\raw\\hydrology\\water_bodies\\reports\\surface_waterbodies_state_index.json"
+    ],
+    "count": 3,
+    "note": "Files found whose names contain ward/admin/district/municipality keywords"
+  },
+  "flood_aoi": {
+    "after_vv_vh.tiff": {
+      "crs": "EPSG:4326",
+      "bounds": [
+        80.3865,
+        16.2567,
+        80.48649999999999,
+        16.3567
+      ],
+      "width": 512,
+      "height": 512,
+      "bands": 2,
+      "dtype": "float32",
+      "nodata": null,
+      "size_mb": 1.92
+    },
+    "before_vv_vh.tiff": {
+      "crs": "EPSG:4326",
+      "bounds": [
+        80.3865,
+        16.2567,
+        80.48649999999999,
+        16.3567
+      ],
+      "width": 512,
+      "height": 512,
+      "bands": 2,
+      "dtype": "float32",
+      "nodata": null,
+      "size_mb": 1.91
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "timestamp": "2026-08-30T19:09:56.095078",
+  "project_root": "C:\\Users\\bhara\\Downloads\\Copernicus-India-Flood",
+  "datasets": {
+    "rainfall": {
+      "status": "present",
+      "path": "C:\\Users\\bhara\\Downloads\\Copernicus-India-Flood\\data\\raw\\rainfall"
+    },
+    "surface_waterbodies": {
+      "status": "present",
+      "path": "C:\\Users\\bhara\\Downloads\\Copernicus-India-Flood\\data\\raw\\hydrology\\water_bodies\\india\\india_surface_waterbodies.geojson"
+    },
+    "hydrology": {
+      "status": "present",
+      "path": "C:\\Users\\bhara\\Downloads\\Copernicus-India-Flood\\data\\raw\\hydrology"
+    },
+    "sentinel1": {
+      "status": "missing",
+      "path": "C:\\Users\\bhara\\Downloads\\Copernicus-India-Flood\\data\\raw\\sentinel1"
+    },
+    "dem": {
+      "status": "missing",
+      "path": "C:\\Users\\bhara\\Downloads\\Copernicus-India-Flood\\data\\raw\\dem"
+    },
+    "soil": {
+      "status": "missing",
+      "path": "C:\\Users\\bhara\\Downloads\\Copernicus-India-Flood\\data\\raw\\soil"
+    }
+  }
+}

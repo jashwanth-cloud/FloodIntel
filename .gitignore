@@ -1,0 +1,37 @@
+# Secrets
+cdse_token.txt
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+venv1/
+
+# Large/generated flood data
+flood_downloads/
+sentinel1_data/
+data/raw/
+data/processed/
+*.tiff
+*.tif
+*.nc
+
+# Temporary/generated files
+*.log
+*.tmp
+
+# OS / IDE
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Generated Sentinel metadata
+india_sentinel1_metadata.csv
+sentinel1_india_search.csv
+sentinel1_india_2018_2025.csv

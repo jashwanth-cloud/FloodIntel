@@ -1,0 +1,38 @@
+DEM DATA LIMITATION — Phase 3 Assessment
+==========================================
+
+FINDING:
+  The raw DEM directory (data/raw/dem/) is EMPTY.
+  No source DEM tiles have been downloaded for the flood AOI.
+
+  The only DEM file present is:
+    data/processed/dem/dem_test_processed.tif
+    - CRS: EPSG:4326
+    - Bounds: left=3.999861, bottom=11.999861, right=5.000139, top=13.000139
+    - Resolution: ~0.000278° (~30m)
+    - Shape: 3601×3601 pixels
+    - Likely source: SRTM30 test tile from Africa/Atlantic region
+
+  The flood AOI (Andhra Pradesh study area) is at:
+    Bounds: left=80.3865, bottom=16.2567, right=80.4865, top=16.3567
+    (Longitude ~80.4°E, Latitude ~16.3°N)
+
+  The DEM test tile and the flood AOI DO NOT OVERLAP geographically.
+
+IMPACT:
+  - Elevation and slope features CANNOT be computed for the flood AOI from
+    the currently available DEM.
+  - DEM-based flood feature columns (elevation_m, slope_deg) will be
+    marked as NULL/NaN in the final feature dataset.
+
+RECOMMENDATION FOR PHASE 4:
+  Download SRTM 30m or Copernicus DEM 30m tiles for the target AOI.
+  The download_dem.py script in scripts/ may handle this.
+  Run: python scripts/download_dem.py --lat 16.25 --lon 80.38 --radius 0.15
+
+TERRAIN FEATURES PLANNED (schema reserved):
+  - elevation_m        : mean elevation in metres
+  - slope_deg          : mean terrain slope in degrees
+  - elevation_min_m    : minimum elevation
+  - elevation_max_m    : maximum elevation
+  - elevation_range_m  : elevation range (terrain roughness proxy)

@@ -1,0 +1,487 @@
+{
+  "generated_at": "2026-08-30T21:20:20.332121",
+  "checks": {
+    "duplicates": {
+      "duplicate_rows": 0,
+      "status": "PASS"
+    },
+    "missing_values": {
+      "pixel_row": {
+        "n_missing": 0,
+        "pct_missing": 0.0
+      },
+      "pixel_col": {
+        "n_missing": 0,
+        "pct_missing": 0.0
+      },
+      "lat": {
+        "n_missing": 0,
+        "pct_missing": 0.0
+      },
+      "lon": {
+        "n_missing": 0,
+        "pct_missing": 0.0
+      },
+      "date": {
+        "n_missing": 0,
+        "pct_missing": 0.0
+      },
+      "ward_id": {
+        "n_missing": 1000,
+        "pct_missing": 100.0
+      },
+      "district_id": {
+        "n_missing": 1000,
+        "pct_missing": 100.0
+      },
+      "state_id": {
+        "n_missing": 1000,
+        "pct_missing": 100.0
+      },
+      "before_vv": {
+        "n_missing": 0,
+        "pct_missing": 0.0
+      },
+      "before_vh": {
+        "n_missing": 0,
+        "pct_missing": 0.0
+      },
+      "after_vv": {
+        "n_missing": 0,
+        "pct_missing": 0.0
+      },
+      "after_vh": {
+        "n_missing": 0,
+        "pct_missing": 0.0
+      },
+      "vv_change": {
+        "n_missing": 0,
+        "pct_missing": 0.0
+      },
+      "vh_change": {
+        "n_missing": 0,
+        "pct_missing": 0.0
+      },
+      "vv_ratio": {
+        "n_missing": 0,
+        "pct_missing": 0.0
+      },
+      "vh_ratio": {
+        "n_missing": 0,
+        "pct_missing": 0.0
+      },
+      "before_vv_vh_ratio": {
+        "n_missing": 0,
+        "pct_missing": 0.0
+      },
+      "after_vv_vh_ratio": {
+        "n_missing": 0,
+        "pct_missing": 0.0
+      },
+      "vv_vh_change": {
+        "n_missing": 0,
+        "pct_missing": 0.0
+      },
+      "flood_label": {
+        "n_missing": 0,
+        "pct_missing": 0.0
+      },
+      "rainfall_1d": {
+        "n_missing": 1000,
+        "pct_missing": 100.0
+      },
+      "rainfall_3d": {
+        "n_missing": 1000,
+        "pct_missing": 100.0
+      },
+      "rainfall_7d": {
+        "n_missing": 1000,
+        "pct_missing": 100.0
+      },
+      "rainfall_mean_annual": {
+        "n_missing": 0,
+        "pct_missing": 0.0
+      },
+      "elevation_m": {
+        "n_missing": 1000,
+        "pct_missing": 100.0
+      },
+      "slope_deg": {
+        "n_missing": 1000,
+        "pct_missing": 100.0
+      },
+      "dist_waterbody_m": {
+        "n_missing": 0,
+        "pct_missing": 0.0
+      },
+      "waterbody_coverage_500m": {
+        "n_missing": 0,
+        "pct_missing": 0.0
+      },
+      "dist_river_m": {
+        "n_missing": 1000,
+        "pct_missing": 100.0
+      },
+      "dist_canal_m": {
+        "n_missing": 1000,
+        "pct_missing": 100.0
+      }
+    },
+    "rainfall_validation": {
+      "issues": [],
+      "status": "PASS"
+    },
+    "coordinate_validation": {
+      "issues": [],
+      "status": "PASS"
+    },
+    "sentinel1_validation": {
+      "issues": [],
+      "s1_cols_checked": 11,
+      "status": "PASS"
+    },
+    "temporal_consistency": {
+      "unique_dates": [
+        "2021-10-06"
+      ],
+      "issues": [],
+      "status": "PASS"
+    },
+    "flood_label_distribution": {
+      "class_distribution": {
+        "0": 1000
+      },
+      "flood_percentage": 0.0,
+      "class_imbalance_ratio": 1000.0,
+      "status": "INFO"
+    }
+  },
+  "feature_statistics": {
+    "flood_features": {
+      "pixel_row": {
+        "count": 1000,
+        "mean": 0.488,
+        "std": 0.500106,
+        "min": 0.0,
+        "p25": 0.0,
+        "median": 0.0,
+        "p75": 1.0,
+        "max": 1.0,
+        "n_outliers_3sigma": 0
+      },
+      "pixel_col": {
+        "count": 1000,
+        "mean": 249.644,
+        "std": 144.658755,
+        "min": 0.0,
+        "p25": 124.75,
+        "median": 249.5,
+        "p75": 374.25,
+        "max": 511.0,
+        "n_outliers_3sigma": 0
+      },
+      "lat": {
+        "count": 1000,
+        "mean": 16.356508,
+        "std": 9.7e-05,
+        "min": 16.356407,
+        "p25": 16.356407,
+        "median": 16.356602,
+        "p75": 16.356602,
+        "max": 16.356602,
+        "n_outliers_3sigma": 0
+      },
+      "lon": {
+        "count": 1000,
+        "mean": 80.435349,
+        "std": 0.028254,
+        "min": 80.386597,
+        "p25": 80.410963,
+        "median": 80.435333,
+        "p75": 80.459696,
+        "max": 80.486404,
+        "n_outliers_3sigma": 0
+      },
+      "before_vv": {
+        "count": 1000,
+        "mean": 0.034317,
+        "std": 0.03292,
+        "min": 0.0,
+        "p25": 0.017288,
+        "median": 0.028772,
+        "p75": 0.042634,
+        "max": 0.557895,
+        "n_outliers_3sigma": 9
+      },
+      "before_vh": {
+        "count": 1000,
+        "mean": 0.180607,
+        "std": 0.127432,
+        "min": 0.0,
+        "p25": 0.090006,
+        "median": 0.146611,
+        "p75": 0.242769,
+        "max": 0.909365,
+        "n_outliers_3sigma": 14
+      },
+      "after_vv": {
+        "count": 1000,
+        "mean": 0.020553,
+        "std": 0.017527,
+        "min": 0.0,
+        "p25": 0.01009,
+        "median": 0.016772,
+        "p75": 0.025761,
+        "max": 0.198979,
+        "n_outliers_3sigma": 15
+      },
+      "after_vh": {
+        "count": 1000,
+        "mean": 0.186406,
+        "std": 0.123191,
+        "min": 0.0,
+        "p25": 0.092672,
+        "median": 0.165018,
+        "p75": 0.24989,
+        "max": 1.0,
+        "n_outliers_3sigma": 11
+      },
+      "vv_change": {
+        "count": 1000,
+        "mean": 0.193523,
+        "std": 0.019684,
+        "min": 0.0,
+        "p25": 0.183695,
+        "median": 0.192464,
+        "p75": 0.201373,
+        "max": 0.362411,
+        "n_outliers_3sigma": 14
+      },
+      "vh_change": {
+        "count": 1000,
+        "mean": 0.436323,
+        "std": 0.121847,
+        "min": 0.0,
+        "p25": 0.363451,
+        "median": 0.427532,
+        "p75": 0.507187,
+        "max": 1.0,
+        "n_outliers_3sigma": 10
+      },
+      "vv_ratio": {
+        "count": 1000,
+        "mean": 0.107707,
+        "std": 0.088319,
+        "min": 0.0,
+        "p25": 0.047976,
+        "median": 0.085658,
+        "p75": 0.134212,
+        "max": 0.653208,
+        "n_outliers_3sigma": 23
+      },
+      "vh_ratio": {
+        "count": 1000,
+        "mean": 0.183813,
+        "std": 0.152813,
+        "min": 0.0,
+        "p25": 0.08576,
+        "median": 0.141041,
+        "p75": 0.2395,
+        "max": 1.0,
+        "n_outliers_3sigma": 21
+      },
+      "before_vv_vh_ratio": {
+        "count": 1000,
+        "mean": 0.057539,
+        "std": 0.072159,
+        "min": 0.0,
+        "p25": 0.019881,
+        "median": 0.039445,
+        "p75": 0.070764,
+        "max": 1.0,
+        "n_outliers_3sigma": 18
+      },
+      "after_vv_vh_ratio": {
+        "count": 1000,
+        "mean": 0.019957,
+        "std": 0.045097,
+        "min": 0.0,
+        "p25": 0.006292,
+        "median": 0.012242,
+        "p75": 0.02251,
+        "max": 1.0,
+        "n_outliers_3sigma": 6
+      },
+      "vv_vh_change": {
+        "count": 1000,
+        "mean": 0.215671,
+        "std": 0.047726,
+        "min": 0.0,
+        "p25": 0.203612,
+        "median": 0.215535,
+        "p75": 0.225789,
+        "max": 1.0,
+        "n_outliers_3sigma": 12
+      },
+      "flood_label": {
+        "count": 1000,
+        "mean": 0.0,
+        "std": 0.0,
+        "min": 0.0,
+        "p25": 0.0,
+        "median": 0.0,
+        "p75": 0.0,
+        "max": 0.0,
+        "n_outliers_3sigma": 0
+      },
+      "rainfall_1d": {
+        "count": 0,
+        "status": "ALL_NULL"
+      },
+      "rainfall_3d": {
+        "count": 0,
+        "status": "ALL_NULL"
+      },
+      "rainfall_7d": {
+        "count": 0,
+        "status": "ALL_NULL"
+      },
+      "rainfall_mean_annual": {
+        "count": 1000,
+        "mean": 0.0,
+        "std": 0.0,
+        "min": 0.0,
+        "p25": 0.0,
+        "median": 0.0,
+        "p75": 0.0,
+        "max": 0.0,
+        "n_outliers_3sigma": 0
+      },
+      "elevation_m": {
+        "count": 0,
+        "status": "ALL_NULL"
+      },
+      "slope_deg": {
+        "count": 0,
+        "status": "ALL_NULL"
+      },
+      "dist_waterbody_m": {
+        "count": 1000,
+        "mean": 787.460632,
+        "std": 165.888626,
+        "min": 524.315369,
+        "p25": 524.315369,
+        "median": 830.758667,
+        "p75": 830.758667,
+        "max": 982.27301,
+        "n_outliers_3sigma": 0
+      },
+      "waterbody_coverage_500m": {
+        "count": 1000,
+        "mean": 0.0,
+        "std": 0.0,
+        "min": 0.0,
+        "p25": 0.0,
+        "median": 0.0,
+        "p75": 0.0,
+        "max": 0.0,
+        "n_outliers_3sigma": 0
+      },
+      "dist_river_m": {
+        "count": 0,
+        "status": "ALL_NULL"
+      },
+      "dist_canal_m": {
+        "count": 0,
+        "status": "ALL_NULL"
+      }
+    }
+  },
+  "datasets_checked": [
+    {
+      "name": "flood_features.parquet",
+      "path": "C:\\Users\\bhara\\Downloads\\Copernicus-India-Flood\\data\\features\\flood_features.parquet",
+      "size_mb": 0.08,
+      "shape": [
+        1000,
+        30
+      ],
+      "columns": [
+        "pixel_row",
+        "pixel_col",
+        "lat",
+        "lon",
+        "date",
+        "ward_id",
+        "district_id",
+        "state_id",
+        "before_vv",
+        "before_vh",
+        "after_vv",
+        "after_vh",
+        "vv_change",
+        "vh_change",
+        "vv_ratio",
+        "vh_ratio",
+        "before_vv_vh_ratio",
+        "after_vv_vh_ratio",
+        "vv_vh_change",
+        "flood_label",
+        "rainfall_1d",
+        "rainfall_3d",
+        "rainfall_7d",
+        "rainfall_mean_annual",
+        "elevation_m",
+        "slope_deg",
+        "dist_waterbody_m",
+        "waterbody_coverage_500m",
+        "dist_river_m",
+        "dist_canal_m"
+      ],
+      "date_range": {
+        "min": "2021-10-06 00:00:00",
+        "max": "2021-10-06 00:00:00"
+      },
+      "spatial_extent": {
+        "lat_min": 16.356407165527344,
+        "lat_max": 16.35660171508789,
+        "lon_min": 80.3865966796875,
+        "lon_max": 80.48640441894531
+      }
+    },
+    {
+      "name": "rainfall_daily.parquet",
+      "shape": [
+        4964,
+        4
+      ],
+      "date_range": {
+        "min": "2018-01-01 00:00:00",
+        "max": "2018-01-01 00:00:00"
+      },
+      "grid_cells": 4964,
+      "rainfall_stats": {
+        "min_mm": 0.0,
+        "max_mm": 6.702259540557861,
+        "mean_mm": 0.006321784574538469,
+        "n_negative": 0
+      }
+    },
+    {
+      "name": "hydrology_features_aoi.parquet",
+      "shape": [
+        9,
+        7
+      ],
+      "columns": [
+        "lat",
+        "lon",
+        "dist_waterbody_m",
+        "waterbody_coverage_500m",
+        "dist_river_m",
+        "dist_canal_m",
+        "basin_name"
+      ]
+    }
+  ]
+}

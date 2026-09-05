@@ -1,0 +1,2 @@
+before_scene,before_date,after_scene,after_date,temporal_gap_days,same_coverage,same_orbit_state,vv_available,vh_available,suitability_score,assessment
+S1A_IW_GRDH_1SDV_20240820T003107_20240820T003132_055289_06BD9B_5392_COG,2024-08-20 00:31:07.544085+00:00,S1A_IW_GRDH_1SDV_20240901T003107_20240901T003132_055464_06C415_8969_COG,2024-09-01 00:31:07.618219+00:00,12.0,True,True,True,True,100,HIGHLY SUITABLE
