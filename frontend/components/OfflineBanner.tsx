@@ -1,0 +1,3 @@
+"use client";
+import { WifiOff } from "lucide-react"; import { useEffect, useState } from "react";
+export default function OfflineBanner(){const [online,setOnline]=useState(true);useEffect(()=>{const online=()=>setOnline(true),offline=()=>setOnline(false);addEventListener("online",online);addEventListener("offline",offline);return()=>{removeEventListener("online",online);removeEventListener("offline",offline)}},[]);return online?null:<div role="status" className="sticky top-0 z-[1100] flex items-center justify-center gap-2 bg-amber-400 px-4 py-2 text-sm font-semibold text-slate-950"><WifiOff size={16}/>You are offline. Previously loaded information and locally queued reports remain available.</div>}

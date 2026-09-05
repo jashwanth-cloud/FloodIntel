@@ -1,0 +1,5 @@
+"use client";
+import "leaflet/dist/leaflet.css"; import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet"; import { useEffect } from "react"; import L from "leaflet";
+const icon=L.divIcon({className:"",html:'<div style="width:18px;height:18px;background:#22d3ee;border:3px solid #082f49;border-radius:50%;box-shadow:0 0 0 4px rgba(34,211,238,.25)"></div>',iconAnchor:[9,9]});
+function Recenter({position}:{position:[number,number]}){const map=useMap();useEffect(()=>{map.setView(position,11)},[map,position]);return null}
+export default function FloodMap({position=[20.5937,78.9629],label="Selected location"}:{position?:[number,number];label?:string}){return <div className="h-[420px] overflow-hidden rounded-xl"><MapContainer center={position} zoom={5} scrollWheelZoom className="h-full w-full" aria-label="Interactive OpenStreetMap"><TileLayer attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/><Recenter position={position}/><Marker position={position} icon={icon}><Popup>{label}</Popup></Marker></MapContainer></div>}
