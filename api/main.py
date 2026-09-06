@@ -1,367 +1,73 @@
-from pathlib import Path
-import json
-from typing import Optional
-
-import requests
-from fastapi import FastAPI, HTTPException, Query
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from api.routers.assistant import router as assistant_router
 from api.routers.flood import router as flood_router
+from api.services.assistant_service import (
+    SUPPORTED_LANGUAGES,
+    get_ollama_status,
+)
+from api.services.flood_service import load_flood_summary
+from api.services.model_service import get_model_metadata
 
 
-# ============================================================
-# CONFIGURATION
-# ============================================================
+APP_NAME = "FloodIntel API"
+APP_VERSION = "2.1.0"
 
-APP_NAME = "Flood Intelligence API"
-APP_VERSION = "2.0.0"
-
-OLLAMA_BASE_URL = "http://localhost:11434"
-OLLAMA_MODEL = "qwen2.5:7b"
-
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
-
-DATA_DIR = PROJECT_ROOT / "data"
-PROCESSED_DIR = DATA_DIR / "processed"
-RAW_DIR = DATA_DIR / "raw"
-
-FLOOD_SUMMARY_FILE = PROCESSED_DIR / "flood_prediction_summary.json"
-
-
-SUPPORTED_LANGUAGES = {
-    "en": "English",
-    "te": "Telugu",
-    "hi": "Hindi",
-    "ta": "Tamil",
-    "kn": "Kannada",
-    "ml": "Malayalam",
-    "bn": "Bengali",
-    "mr": "Marathi",
-    "gu": "Gujarati",
-    "pa": "Punjabi",
-    "or": "Odia",
-    "ur": "Urdu",
-}
-
-
-# ============================================================
-# FASTAPI APPLICATION
-# ============================================================
 
 app = FastAPI(
     title=APP_NAME,
     version=APP_VERSION,
-    description="AI-powered flood intelligence and early warning API",
+    description=(
+        "Backend API for FloodIntel — AI-Powered Flood Intelligence "
+        "and Early Warning Platform."
+    ),
 )
 
-
-# ============================================================
-# ROUTER REGISTRATION
-# ============================================================
-
-app.include_router(flood_router)
-
-
-# ============================================================
-# CORS
-# ============================================================
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
-    allow_credentials=True,
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
 
-# ============================================================
-# HELPER FUNCTIONS
-# ============================================================
+app.include_router(flood_router)
+app.include_router(assistant_router)
 
-def load_flood_summary():
-    """Load the processed flood prediction summary."""
-
-    if not FLOOD_SUMMARY_FILE.exists():
-        raise FileNotFoundError(
-            f"Flood prediction summary not found: {FLOOD_SUMMARY_FILE}"
-        )
-
-    try:
-        with FLOOD_SUMMARY_FILE.open("r", encoding="utf-8") as file:
-            return json.load(file)
-
-    except json.JSONDecodeError as exc:
-        raise ValueError(
-            f"Invalid flood prediction summary JSON: {exc}"
-        ) from exc
-
-
-def check_ollama():
-    """Check whether Ollama is running."""
-
-    try:
-        response = requests.get(
-            f"{OLLAMA_BASE_URL}/api/tags",
-            timeout=3,
-        )
-
-        if response.status_code != 200:
-            return False
-
-        models = response.json().get("models", [])
-
-        for model in models:
-            if model.get("name") == OLLAMA_MODEL:
-                return True
-
-        return False
-
-    except requests.RequestException:
-        return False
-
-
-# ============================================================
-# ROOT
-# ============================================================
 
 @app.get("/")
 async def root():
-
     return {
         "name": APP_NAME,
         "version": APP_VERSION,
-        "status": "running",
-        "message": "FloodIntel backend is running",
+        "status": "online",
+        "docs": "/docs",
+        "openapi": "/openapi.json",
     }
 
 
-# ============================================================
-# HEALTH
-# ============================================================
-
 @app.get("/health")
 async def health():
+    flood_data_available = True
+
+    try:
+        load_flood_summary()
+    except (FileNotFoundError, ValueError):
+        flood_data_available = False
 
     return {
         "status": "healthy",
         "service": APP_NAME,
         "version": APP_VERSION,
+        "flood_data_available": flood_data_available,
     }
 
 
-# ============================================================
-# FLOOD SUMMARY
-# ============================================================
-
-@app.get("/flood/summary")
-async def flood_summary():
-
-    try:
-
-        summary = load_flood_summary()
-
-        return {
-            "status": "success",
-            "data": summary,
-        }
-
-    except FileNotFoundError as exc:
-
-        raise HTTPException(
-            status_code=503,
-            detail=str(exc),
-        )
-
-    except ValueError as exc:
-
-        raise HTTPException(
-            status_code=500,
-            detail=str(exc),
-        )
-
-
-# ============================================================
-# FLOOD STATUS
-# ============================================================
-
-@app.get("/flood/status")
-async def flood_status():
-
-    try:
-
-        summary = load_flood_summary()
-
-        prediction = summary.get("prediction", {})
-        risk = summary.get("risk", {})
-        area = summary.get("area", {})
-
-        return {
-            "status": "success",
-            "flood_status": prediction.get(
-                "status",
-                prediction.get("label", "Unknown"),
-            ),
-            "risk_level": risk.get(
-                "level",
-                risk.get("risk_level", "Unknown"),
-            ),
-            "affected_area": area,
-        }
-
-    except FileNotFoundError as exc:
-
-        raise HTTPException(
-            status_code=503,
-            detail=str(exc),
-        )
-
-    except ValueError as exc:
-
-        raise HTTPException(
-            status_code=500,
-            detail=str(exc),
-        )
-
-
-# ============================================================
-# FLOOD ADVISORY
-# ============================================================
-
-@app.get("/flood/advisory")
-async def flood_advisory():
-
-    try:
-
-        summary = load_flood_summary()
-
-        prediction = summary.get("prediction", {})
-        risk = summary.get("risk", {})
-
-        risk_level = risk.get(
-            "level",
-            risk.get("risk_level", "Unknown"),
-        )
-
-        if str(risk_level).lower() == "high":
-
-            advisory = (
-                "High flood risk detected. "
-                "Avoid low-lying and waterlogged areas "
-                "and follow official emergency instructions."
-            )
-
-        elif str(risk_level).lower() == "medium":
-
-            advisory = (
-                "Moderate flood risk detected. "
-                "Stay alert and monitor rainfall and official alerts."
-            )
-
-        else:
-
-            advisory = (
-                "No immediate high flood risk indicated "
-                "by the current prediction summary."
-            )
-
-        return {
-            "status": "success",
-            "risk_level": risk_level,
-            "prediction": prediction,
-            "advisory": advisory,
-        }
-
-    except FileNotFoundError as exc:
-
-        raise HTTPException(
-            status_code=503,
-            detail=str(exc),
-        )
-
-    except ValueError as exc:
-
-        raise HTTPException(
-            status_code=500,
-            detail=str(exc),
-        )
-
-
-# ============================================================
-# FLOOD STATISTICS
-# ============================================================
-
-@app.get("/flood/statistics")
-async def flood_statistics():
-
-    try:
-
-        summary = load_flood_summary()
-
-        return {
-            "status": "success",
-            "statistics": summary.get(
-                "statistics",
-                summary.get("area", {}),
-            ),
-        }
-
-    except FileNotFoundError as exc:
-
-        raise HTTPException(
-            status_code=503,
-            detail=str(exc),
-        )
-
-    except ValueError as exc:
-
-        raise HTTPException(
-            status_code=500,
-            detail=str(exc),
-        )
-
-
-# ============================================================
-# FLOOD VALIDATION
-# ============================================================
-
-@app.get("/flood/validation")
-async def flood_validation():
-
-    try:
-
-        summary = load_flood_summary()
-
-        return {
-            "status": "success",
-            "validation": summary.get(
-                "validation",
-                {},
-            ),
-        }
-
-    except FileNotFoundError as exc:
-
-        raise HTTPException(
-            status_code=503,
-            detail=str(exc),
-        )
-
-    except ValueError as exc:
-
-        raise HTTPException(
-            status_code=500,
-            detail=str(exc),
-        )
-
-
-# ============================================================
-# LANGUAGES
-# ============================================================
-
-@app.get("/languages")
+@app.get("/api/languages")
 async def languages():
-
     return {
         "status": "success",
         "count": len(SUPPORTED_LANGUAGES),
@@ -369,93 +75,36 @@ async def languages():
     }
 
 
-# ============================================================
-# AI ASSISTANT
-# ============================================================
+@app.get("/api/system/info")
+async def system_info():
+    ollama = get_ollama_status()
+    model = get_model_metadata()
 
-@app.get("/assistant")
-async def assistant(
-    message: str = Query(..., min_length=1),
-    language: str = Query("en"),
-):
-
-    if language not in SUPPORTED_LANGUAGES:
-
-        raise HTTPException(
-            status_code=400,
-            detail=f"Unsupported language: {language}",
-        )
-
-    ollama_available = check_ollama()
-
-    if not ollama_available:
-
-        return {
-            "status": "unavailable",
-            "message": (
-                "AI assistant is currently unavailable. "
-                "Please make sure Ollama is running."
-            ),
-            "model": OLLAMA_MODEL,
-            "language": SUPPORTED_LANGUAGES[language],
-        }
+    flood_data_available = True
 
     try:
-
-        response = requests.post(
-            f"{OLLAMA_BASE_URL}/api/generate",
-            json={
-                "model": OLLAMA_MODEL,
-                "prompt": message,
-                "stream": False,
-            },
-            timeout=60,
-        )
-
-        response.raise_for_status()
-
-        result = response.json()
-
-        return {
-            "status": "success",
-            "response": result.get("response", ""),
-            "model": OLLAMA_MODEL,
-            "language": SUPPORTED_LANGUAGES[language],
-        }
-
-    except requests.RequestException as exc:
-
-        raise HTTPException(
-            status_code=503,
-            detail=f"Ollama request failed: {exc}",
-        )
-
-
-# ============================================================
-# SYSTEM INFORMATION
-# ============================================================
-
-@app.get("/system/info")
-async def system_info():
-
-    ollama_running = check_ollama()
+        summary = load_flood_summary()
+    except (FileNotFoundError, ValueError):
+        summary = None
+        flood_data_available = False
 
     return {
-        "application": APP_NAME,
-        "version": APP_VERSION,
-        "ollama": {
-            "running": ollama_running,
-            "base_url": OLLAMA_BASE_URL,
-            "model": OLLAMA_MODEL,
+        "status": "success",
+        "application": {
+            "name": APP_NAME,
+            "version": APP_VERSION,
         },
-        "paths": {
-            "project_root": str(PROJECT_ROOT),
-            "data": str(DATA_DIR),
-            "processed": str(PROCESSED_DIR),
-            "raw": str(RAW_DIR),
+        "services": {
+            "flood_data": {
+                "available": flood_data_available,
+            },
+            "ollama": ollama,
+            "model": model,
         },
-        "languages": {
-            "count": len(SUPPORTED_LANGUAGES),
-            "supported": SUPPORTED_LANGUAGES,
-        },
+        "supported_languages": SUPPORTED_LANGUAGES,
+        "prediction_source": (
+            summary.get("source", "precomputed_flood_prediction")
+            if isinstance(summary, dict)
+            else "precomputed_flood_prediction"
+        ),
     }
