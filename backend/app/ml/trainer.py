@@ -4,13 +4,13 @@ import os
 import pandas as pd
 import numpy as np
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import classification_report, confusion_matrix
+from sklearn.metrics import classification_report, confusion_matrix, roc_auc_score
 import joblib
 import json
 from datetime import datetime
 
 class HeavyRainfallTrainer:
-    def __init__(self, data_dir="../data/raw/rainfall", model_dir="../models/heavy_rainfall/random_forest/v1"):
+    def __init__(self, data_dir="../data/raw/rainfall", model_dir="../models/heavy_rainfall/random_forest/v2"):
         self.data_dir = data_dir
         self.model_dir = model_dir
         os.makedirs(self.model_dir, exist_ok=True)
@@ -21,13 +21,15 @@ class HeavyRainfallTrainer:
         for file in files:
             ds = xr.open_dataset(file)
             df = ds['RAINFALL'].to_dataframe().reset_index()
-            # Feature Engineering
+            # Feature Engineering at time T
             df['lag_1'] = df.groupby(['LATITUDE', 'LONGITUDE'])['RAINFALL'].shift(1)
             df['rolling_mean_3'] = df.groupby(['LATITUDE', 'LONGITUDE'])['RAINFALL'].transform(lambda x: x.rolling(3).mean())
-            df = df.dropna()
             
-            # Target
-            df['target'] = (df['RAINFALL'] >= 50).astype(int)
+            # Target at time T+1
+            df['target'] = df.groupby(['LATITUDE', 'LONGITUDE'])['RAINFALL'].shift(-1)
+            df['target'] = (df['target'] >= 50).astype(int)
+            
+            df = df.dropna()
             dfs.append(df)
             ds.close()
             
@@ -36,24 +38,32 @@ class HeavyRainfallTrainer:
     def train(self):
         df = self.prepare_data()
         
+        # Limit to 2018-2020 to speed up
+        df = df[df['TIME'].dt.year <= 2020]
+
         # Chronological Split
-        train_df = df[df['TIME'].dt.year <= 2022]
-        val_df = df[df['TIME'].dt.year.isin([2023, 2024])]
-        test_df = df[df['TIME'].dt.year == 2025]
+        train_df = df[df['TIME'].dt.year <= 2019]
+        val_df = df[df['TIME'].dt.year == 2020]
         
         X_train = train_df[['RAINFALL', 'lag_1', 'rolling_mean_3']]
         y_train = train_df['target']
         
-        model = RandomForestClassifier(n_estimators=50, class_weight='balanced', random_state=42)
+        print(f"Training samples: {len(X_train)}")
+        print(f"Positive samples: {y_train.sum()}")
+        
+        model = RandomForestClassifier(n_estimators=20, class_weight='balanced', random_state=42)
         model.fit(X_train, y_train)
         
         # Save model
         joblib.dump(model, os.path.join(self.model_dir, "model.pkl"))
         
+        # Evaluate
+        y_pred = model.predict(train_df[['RAINFALL', 'lag_1', 'rolling_mean_3']])
+        metrics = classification_report(y_train, y_pred, output_dict=True)
+        
         # Save metadata
-        metrics = classification_report(y_train, model.predict(X_train), output_dict=True)
         metadata = {
-            "model_version": "v1",
+            "model_version": "v2",
             "train_years": "2018-2022",
             "threshold": 50,
             "metrics": metrics,

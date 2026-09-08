@@ -32,18 +32,18 @@ class RiskEngineService:
             risk_level=level,
             factors=[
                 RiskFactor(
-                    factor="Heavy Rainfall Detection (ML)",
+                    factor="Next-Day Heavy Rainfall Prediction (ML)",
                     impact=level,
                     value=float(ml_result["heavy_rainfall_detected"]),
                     unit="bool",
-                    description=f"ML model detection: {ml_result['heavy_rainfall_detected']}"
+                    description=f"ML model prediction for tomorrow: {ml_result['heavy_rainfall_detected']}"
                 ),
                 RiskFactor(
                     factor="Rainfall Intensity",
                     impact=level,
                     value=amount,
                     unit="mm",
-                    description=f"Observed rainfall of {amount} mm."
+                    description=f"Observed rainfall today: {amount} mm."
                 )
             ],
             model_version=ml_result["model_version"],

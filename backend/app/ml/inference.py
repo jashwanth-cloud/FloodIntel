@@ -4,7 +4,7 @@ import os
 import json
 
 class HeavyRainfallInference:
-    def __init__(self, model_dir="../models/heavy_rainfall/random_forest/v1"):
+    def __init__(self, model_dir="../models/heavy_rainfall/random_forest/v2"):
         self.model = joblib.load(os.path.join(model_dir, "model.pkl"))
         with open(os.path.join(model_dir, "metadata.json"), "r") as f:
             self.metadata = json.load(f)
