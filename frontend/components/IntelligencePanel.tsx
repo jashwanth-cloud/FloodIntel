@@ -2,28 +2,40 @@
 import { useState } from 'react';
 
 export default function IntelligencePanel({ locationId }: { locationId: number }) {
-  const [data, setData] = useState<any>(null);
+  const [riskData, setRiskData] = useState<any>(null);
+  const [weatherData, setWeatherData] = useState<any>(null);
   const [loading, setLoading] = useState(false);
 
-  const fetchRisk = async () => {
+  const fetchDetails = async () => {
     setLoading(true);
-    const res = await fetch(`http://127.0.0.1:8000/api/v1/risk/${locationId}`);
-    const json = await res.json();
-    setData(json);
+    const [riskRes, weatherRes] = await Promise.all([
+      fetch(`http://127.0.0.1:8000/api/v1/risk/${locationId}`),
+      fetch(`http://127.0.0.1:8000/api/v1/weather/${locationId}`)
+    ]);
+    setRiskData(await riskRes.json());
+    setWeatherData(await weatherRes.json());
     setLoading(false);
   };
 
   return (
     <div className="p-4 border rounded shadow">
-      <button onClick={fetchRisk} className="bg-blue-500 text-white p-2 rounded">
-        Check Risk
+      <button onClick={fetchDetails} className="bg-blue-500 text-white p-2 rounded">
+        Check Intelligence
       </button>
       {loading && <p>Loading...</p>}
-      {data && (
+      {riskData && (
         <div className="mt-4">
-          <h2 className="font-bold">Risk Level: {data.risk_level}</h2>
-          <p>Score: {data.risk_score}</p>
-          <p>State: {data.data_state}</p>
+          <h2 className="font-bold text-xl">Risk: {riskData.risk_level}</h2>
+          <p>Score: {riskData.risk_score}</p>
+          <p>Model: {riskData.model_version} ({riskData.data_state})</p>
+        </div>
+      )}
+      {weatherData && (
+        <div className="mt-4 border-t pt-2">
+          <h3 className="font-bold">Weather ({weatherData.data_state})</h3>
+          <p>Temp: {weatherData.temperature}°C</p>
+          <p>Condition: {weatherData.weather_condition}</p>
+          <p>Source: {weatherData.source}</p>
         </div>
       )}
     </div>
