@@ -1,0 +1,33 @@
+{
+    "model_version": "v1",
+    "train_years": "2018-2022",
+    "threshold": 50,
+    "metrics": {
+        "0": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 8913701.0
+        },
+        "1": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 100923.0
+        },
+        "accuracy": 1.0,
+        "macro avg": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 9014624.0
+        },
+        "weighted avg": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 9014624.0
+        }
+    },
+    "training_timestamp": "2026-09-08T15:43:28.423343"
+}
