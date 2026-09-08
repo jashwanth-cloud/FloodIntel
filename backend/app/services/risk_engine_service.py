@@ -12,9 +12,9 @@ class RiskEngineService:
         ml_result = self.ml_detector.predict(amount, lag_1, rolling_mean_3)
         
         # Risk logic using ML signal
-        if ml_result["heavy_rainfall_detected"]:
+        if ml_result["heavy_rainfall_predicted"]:
             level = "SEVERE"
-            score = 85
+            score = 80 + int(ml_result["probability"] * 20)
         elif amount > 50:
             level = "HIGH"
             score = 70
@@ -28,15 +28,15 @@ class RiskEngineService:
         return RiskAssessment(
             location_id=location_id,
             timestamp=rainfall_data.get("timestamp"),
-            risk_score=score,
+            risk_score=min(score, 100),
             risk_level=level,
             factors=[
                 RiskFactor(
                     factor="Next-Day Heavy Rainfall Prediction (ML)",
                     impact=level,
-                    value=float(ml_result["heavy_rainfall_detected"]),
-                    unit="bool",
-                    description=f"ML model prediction for tomorrow: {ml_result['heavy_rainfall_detected']}"
+                    value=float(ml_result["probability"]),
+                    unit="prob",
+                    description=f"ML model prediction probability for tomorrow: {ml_result['probability']:.2f} (Threshold: {ml_result['threshold']:.2f})"
                 ),
                 RiskFactor(
                     factor="Rainfall Intensity",
