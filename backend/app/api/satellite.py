@@ -9,7 +9,8 @@ RASTER_PATH = "data/processed/feature04/validated_flood_label.tif"
 
 @router.get("/satellite/flood/{location_id}")
 async def get_satellite_flood(location_id: str):
-    if location_id != "default": # Minimal location check for now
+    # Map any numeric location or "default" to the single available raster
+    if location_id != "default" and not location_id.isdigit():
         raise HTTPException(status_code=404, detail="Location not found")
         
     if not os.path.exists(RASTER_PATH):

@@ -25,9 +25,16 @@ class RiskEngineService:
             level = "LOW"
             score = 15
             
+        # Normalize timestamp to string
+        ts = rainfall_data.get("timestamp")
+        if isinstance(ts, (datetime,)):
+            ts = ts.isoformat()
+        elif ts is None:
+            ts = datetime.now(timezone.utc).isoformat()
+            
         return RiskAssessment(
             location_id=location_id,
-            timestamp=rainfall_data.get("timestamp"),
+            timestamp=ts,
             risk_score=min(score, 100),
             risk_level=level,
             factors=[

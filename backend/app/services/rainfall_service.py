@@ -1,6 +1,6 @@
 import xarray as xr
 import glob
-import os
+from pathlib import Path
 from abc import ABC, abstractmethod
 from datetime import datetime
 
@@ -13,14 +13,20 @@ class RainfallProvider(ABC):
         pass
 
 class IMDHistoricalRainfallProvider(RainfallProvider):
-    def __init__(self, data_dir: str = "../data/raw/rainfall"):
-        self.data_dir = data_dir
+    def __init__(self, data_dir=None):
+        if data_dir is None:
+            project_root = Path(__file__).resolve().parent.parent.parent.parent
+            self.data_dir = project_root / "data" / "raw" / "rainfall"
+        else:
+            self.data_dir = Path(data_dir)
+            
         self.datasets = {}
         self._load_datasets()
 
     def _load_datasets(self):
         print(f"Loading datasets from {self.data_dir}")
-        files = glob.glob(os.path.join(self.data_dir, "*.nc"))
+        # Use glob on the resolved Path
+        files = list(self.data_dir.glob("*.nc"))
         print(f"Found files: {files}")
         for file in files:
             ds = xr.open_dataset(file, decode_times=True)
