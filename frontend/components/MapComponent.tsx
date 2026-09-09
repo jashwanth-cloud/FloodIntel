@@ -12,9 +12,49 @@ export default function MapComponent() {
     
     map.current = new maplibregl.Map({
       container: mapContainer.current,
-      style: 'https://demotiles.maplibre.org/style.json', // Use a free style
-      center: [78.9629, 20.5937], // India center
+      style: 'https://demotiles.maplibre.org/style.json',
+      center: [78.9629, 20.5937],
       zoom: 4
+    });
+
+    map.current.on('load', async () => {
+      // Fetch historical flood data
+      try {
+        const response = await fetch('/api/v1/satellite/flood/default');
+        const data = await response.json();
+        
+        // Add flood extent as a source and layer
+        map.current.addSource('historical-flood', {
+          'type': 'geojson',
+          'data': {
+            'type': 'Feature',
+            'properties': { 'description': 'Historical Flood Extent (2024-09-01)' },
+            'geometry': {
+              'type': 'Polygon',
+              'coordinates': [[
+                [data.bounds[0], data.bounds[1]],
+                [data.bounds[2], data.bounds[1]],
+                [data.bounds[2], data.bounds[3]],
+                [data.bounds[0], data.bounds[3]],
+                [data.bounds[0], data.bounds[1]]
+              ]]
+            }
+          }
+        });
+        
+        map.current.addLayer({
+          'id': 'historical-flood-layer',
+          'type': 'fill',
+          'source': 'historical-flood',
+          'layout': {},
+          'paint': {
+            'fill-color': '#088',
+            'fill-opacity': 0.5
+          }
+        });
+      } catch (error) {
+        console.error('Failed to load historical flood layer:', error);
+      }
     });
   }, []);
 
