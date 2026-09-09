@@ -1,14 +1,21 @@
 import joblib
 import pandas as pd
-import os
 import json
-import xarray as xr
+from pathlib import Path
 from datetime import datetime
 
 class HeavyRainfallInference:
-    def __init__(self, model_dir="../models/heavy_rainfall/random_forest/v2"):
-        self.model = joblib.load(os.path.join(model_dir, "model.pkl"))
-        with open(os.path.join(model_dir, "metadata.json"), "r") as f:
+    def __init__(self, model_dir=None):
+        if model_dir is None:
+            # Resolve path relative to this file: backend/app/ml/inference.py
+            # Path to repo root: ../../../
+            project_root = Path(__file__).resolve().parent.parent.parent.parent
+            model_dir = project_root / "models" / "heavy_rainfall" / "random_forest" / "v2"
+        else:
+            model_dir = Path(model_dir)
+
+        self.model = joblib.load(model_dir / "model.pkl")
+        with open(model_dir / "metadata.json", "r") as f:
             self.metadata = json.load(f)
         self.threshold = self.metadata["threshold"]
 
