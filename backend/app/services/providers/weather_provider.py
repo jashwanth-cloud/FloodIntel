@@ -35,10 +35,14 @@ class IMDWeatherProvider(WeatherProvider):
             async with httpx.AsyncClient(timeout=self.timeout) as client:
                 # Official Endpoint: /public/current_wx
                 response = await client.get(f"{self.base_url}/public/current_wx", params={"lat": lat, "lon": lon, "api_key": self.api_key})
-                response.raise_for_status()
-                data = response.json()
-
                 
+                # Verify the response is not a coroutine (i.e., properly awaited)
+                if hasattr(response, 'raise_for_status'):
+                    response.raise_for_status()
+                    data = response.json()
+                else:
+                    raise Exception(f"Invalid response object type: {type(response)}")
+
                 # Normalize response (assuming schema from official docs)
                 result = {
                     "source": "IMD",
@@ -54,7 +58,7 @@ class IMDWeatherProvider(WeatherProvider):
             print(f"IMD API call failed: {e}")
             return self._demo_response(lat, lon, "ERROR")
         except Exception as e:
-            print(f"IMD Provider error: {e}")
+            print(f"IMD Provider error: {type(e).__name__}: {e}")
             return self._demo_response(lat, lon, "ERROR")
 
     def _demo_response(self, lat, lon, state):
