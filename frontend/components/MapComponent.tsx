@@ -58,5 +58,16 @@ export default function MapComponent() {
     });
   }, []);
 
-  return <div ref={mapContainer} style={{ height: '500px', width: '100%' }} />;
+  return (
+    <div className="relative h-full w-full">
+        <div ref={mapContainer} className="h-full w-full" />
+        <div className="absolute bottom-4 left-4 p-2 bg-white/90 dark:bg-gray-800/90 rounded shadow text-xs">
+            <p className="font-bold mb-1">Legend</p>
+            <div className="flex items-center gap-2">
+                <div className="w-3 h-3 bg-[#088] opacity-50"></div>
+                <span>Historical Satellite</span>
+            </div>
+        </div>
+    </div>
+  );
 }
