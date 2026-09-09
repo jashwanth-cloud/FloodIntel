@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { DataStateBadge } from './ui/DataStateBadge';
+import { API_BASE } from '../lib/api';
 
 export default function IntelligencePanel({ locationId }: { locationId: number }) {
   const [data, setData] = useState<any>({ risk: null, weather: null, alert: null, intel: null });
@@ -15,10 +16,10 @@ export default function IntelligencePanel({ locationId }: { locationId: number }
     setLoading(true);
     try {
       const [riskRes, weatherRes, alertRes, intelRes] = await Promise.all([
-        fetch(`http://127.0.0.1:8000/api/v1/risk/${locationId}`),
-        fetch(`http://127.0.0.1:8000/api/v1/weather/${locationId}`),
-        fetch(`http://127.0.0.1:8000/api/v1/alerts/${locationId}`),
-        fetch(`http://127.0.0.1:8000/api/v1/intelligence/${locationId}`)
+        fetch(`${API_BASE}/api/v1/risk/${locationId}`),
+        fetch(`${API_BASE}/api/v1/weather/${locationId}`),
+        fetch(`${API_BASE}/api/v1/alerts/${locationId}`),
+        fetch(`${API_BASE}/api/v1/intelligence/${locationId}`)
       ]);
       setData({
         risk: await riskRes.json(),
