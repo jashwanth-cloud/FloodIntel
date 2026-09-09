@@ -12,3 +12,6 @@ venv/
 
 # Large data files
 data/raw/rainfall/*.nc
+
+# ML model binaries
+*.pkl
