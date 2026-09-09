@@ -1,14 +1,14 @@
 'use client';
 import { useEffect, useRef } from 'react';
-import maplibregl from 'maplibre-gl';
+import * as maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 
 export default function MapComponent() {
-  const mapContainer = useRef(null);
-  const map = useRef(null);
+  const mapContainer = useRef<HTMLDivElement>(null);
+  const map = useRef<maplibregl.Map | null>(null);
 
   useEffect(() => {
-    if (map.current) return; // initialize map only once
+    if (map.current || !mapContainer.current) return; // initialize map only once
     
     map.current = new maplibregl.Map({
       container: mapContainer.current,
@@ -24,7 +24,7 @@ export default function MapComponent() {
         const data = await response.json();
         
         // Add flood extent as a source and layer
-        map.current.addSource('historical-flood', {
+        map.current?.addSource('historical-flood', {
           'type': 'geojson',
           'data': {
             'type': 'Feature',
@@ -42,7 +42,7 @@ export default function MapComponent() {
           }
         });
         
-        map.current.addLayer({
+        map.current?.addLayer({
           'id': 'historical-flood-layer',
           'type': 'fill',
           'source': 'historical-flood',
